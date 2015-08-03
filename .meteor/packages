@@ -9,3 +9,8 @@ autopublish
 insecure
 nimble:restivus
 accounts-password
+http
+iron:router
+aldeed:collection2
+sacha:spin
+zodiase:mdl

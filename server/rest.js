@@ -17,9 +17,22 @@ var api = new Restivus({
 
 api.addRoute('test/:id', {authRequired: true}, {
     get: {
-        roleRequired: ['author', 'admin'],
+        //roleRequired: ['author', 'admin'],
         action: function () {
-            return {status: 'success', data: {message: 'ok'}};
+
+            //this.unblock();
+            var res = false;
+            try {
+                var result = HTTP.call("GET", "https://10.192.18.170/#/login", {
+                    npmRequestOptions: {rejectUnauthorized: false}
+                });
+                res = true;
+            } catch (e) {
+                // Got a network error, time-out or HTTP error in the 400 or 500 range.
+                console.log(e);
+            }
+
+            return {status: res, data: {message: result}};
         }
     }
 });

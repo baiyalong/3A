@@ -1,0 +1,21 @@
+<template name="layout">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--overlay-drawer-button">
+        <!--header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Fixed drawer layout demo</span>
+            </div>
+        </header-->
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">接口鉴权</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="/user">用户管理</a>
+                <a class="mdl-navigation__link" href="/product">接口管理</a>
+                <a class="mdl-navigation__link" href="/order">权限管理</a>
+                <a class="mdl-navigation__link" href="/record">接口日志</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div>{{>yield}}</div>
+        </main>
+    </div>
+</template>
