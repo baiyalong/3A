@@ -1,3 +1,60 @@
 <template name="product">
-    <p>接口管理</p>
+
+    <div class="row">
+        <a class="add modal-trigger waves-effect btn-floating red" href="#modal1"><i class="material-icons">add</i></a>
+
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4 id="topic">添加接口</h4>
+
+                <div class="divider"></div>
+                <div>
+                    <div class="input-field row">
+                        <input class="validate" type="text" id="name"/>
+                        <label for="name">接口名</label>
+                    </div>
+                    <div class="input-field row">
+                        <input class="validate" type="text" id="addr"/>
+                        <label for="addr">地址</label>
+                    </div>
+                    <div class="input-field row">
+                        <select id="method">
+                            <option value="GET" selected="selected">GET</option>
+                            <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
+                        </select>
+                        <label for="method">方法</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save" class="modal-action modal-close waves-effect btn-flat ">保存</button>
+                <button id="cancel" class="modal-action modal-close waves-effect btn-flat ">取消</button>
+            </div>
+        </div>
+    </div>
+    <table class="hoverable bordered">
+        <thead>
+        <tr>
+            <th>接口名</th>
+            <th>地址</th>
+            <th>方法</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each products}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{addr}}</td>
+            <td>{{method}}</td>
+            <td>
+                <a class="edit modal-trigger waves-effect btn-floating"><i class="material-icons">edit</i></a>
+                <a class="remove waves-effect btn-floating"><i class="material-icons">clear</i></a>
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </template>

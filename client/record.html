@@ -1,3 +1,24 @@
 <template name="record">
-    <p>接口日志</p>
+    <table class="hoverable bordered">
+        <thead>
+        <tr>
+            <th>用户</th>
+            <th>地址</th>
+            <th>方法</th>
+            <th>时间戳</th>
+            <th>时间间隔</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each records}}
+        <tr>
+            <td>{{username}}</td>
+            <td>{{addr}}</td>
+            <td>{{method}}</td>
+            <td>{{timeStamp}}</td>
+            <td>{{timeInterval}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </template>

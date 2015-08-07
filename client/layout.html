@@ -1,21 +1,26 @@
 <template name="layout">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--overlay-drawer-button">
-        <!--header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Fixed drawer layout demo</span>
+    <!-- Navbar goes here -->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center"></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li class="waves-effect"><a href="/user">用户</a></li>
+                    <li class="waves-effect"><a href="/order">权限</a></li>
+                    <li class="waves-effect"><a href="/product">接口</a></li>
+                    <li class="waves-effect"><a href="/record">日志</a></li>
+                </ul>
+                <div class="input-field right">
+                    <input id="search" type="search" required>
+                    <label for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
             </div>
-        </header-->
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">接口鉴权</span>
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="/user">用户管理</a>
-                <a class="mdl-navigation__link" href="/product">接口管理</a>
-                <a class="mdl-navigation__link" href="/order">权限管理</a>
-                <a class="mdl-navigation__link" href="/record">接口日志</a>
-            </nav>
-        </div>
-        <main class="mdl-layout__content">
-            <div>{{>yield}}</div>
-        </main>
+        </nav>
+    </div>
+    <!-- Page Layout here -->
+    <div class="row">
+        <!-- Teal page content  -->
+        <div>{{>yield}}</div>
     </div>
 </template>

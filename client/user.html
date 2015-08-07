@@ -1,29 +1,73 @@
 <template name="user">
-    <p>用户管理</p>
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
+
+    <div class="row">
+        <a class="add modal-trigger waves-effect btn-floating red" href="#modal1"><i class="material-icons">add</i></a>
+
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4 id="topic">添加用户</h4>
+
+                <div class="divider"></div>
+                <div>
+                    <div class="input-field row">
+                        <input class="validate" type="text" id="username"/>
+                        <label for="username">用户名</label>
+                    </div>
+                    <div class="input-field row">
+                        <input class="validate" type="text" id="password"/>
+                        <label for="password">密码</label>
+                    </div>
+                    <div class="row">
+                        <table class="hoverable bordered">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="checkAll" class="filled-in"/>
+                                    <label for="checkAll"></label>
+                                </th>
+                                <th>角色</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each roles}}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="{{_id}}" class="filled-in"/>
+                                    <label for="{{_id}}"></label>
+                                </td>
+                                <td>{{name}}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save" class="modal-action modal-close waves-effect  btn-flat ">保存</button>
+                <button id="close" class="modal-action modal-close waves-effect  btn-flat ">取消</button>
+            </div>
+        </div>
+    </div>
+    <table class="hoverable bordered">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric">Material</th>
-            <th>Quantity</th>
-            <th>Unit price</th>
+            <th>用户名</th>
+            <th>角色</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
+        {{#each users}}
         <tr>
-            <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-            <td>250</td>
-            <td>$2.90</td>
+            <td>{{username}}</td>
+            <td>{{rolesString}}</td>
+            <td>
+                <a class="edit waves-effect btn-floating"><i class="material-icons">edit</i></a>
+                <a class="remove waves-effect btn-floating"><i class="material-icons">clear</i></a>
+            </td>
         </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-            <td>50</td>
-            <td>$1.25</td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-            <td>10</td>
-            <td>$12.35</td>
-        </tr>
+        {{/each}}
         </tbody>
     </table>
 </template>
