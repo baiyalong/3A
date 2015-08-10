@@ -1,3 +1,22 @@
 <template name="login">
-    <p>用户登录</p>
+    <div id="modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>用户登录</h4>
+
+            <div class="divider"></div>
+            <div>
+                <div class="input-field row">
+                    <input class="validate" type="text" id="username"/>
+                    <label class="active" for="username">用户名</label>
+                </div>
+                <div class="input-field row">
+                    <input class="validate" type="text" id="password"/>
+                    <label class="active" for="password">密码</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="login" class="modal-action waves-effect  btn-flat ">登录</button>
+        </div>
+    </div>
 </template>

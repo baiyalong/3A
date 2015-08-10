@@ -11,28 +11,28 @@
                 <div>
                     <div class="input-field row">
                         <input class="validate" type="text" id="username"/>
-                        <label for="username">用户名</label>
+                        <label class="active" for="username">用户名</label>
                     </div>
                     <div class="input-field row">
                         <input class="validate" type="text" id="password"/>
-                        <label for="password">密码</label>
+                        <label class="active" for="password">密码</label>
                     </div>
                     <div class="row">
                         <table class="hoverable bordered">
                             <thead>
                             <tr>
                                 <th>
-                                    <input type="checkbox" id="checkAll" class="filled-in"/>
+                                    <input type="checkbox" id="checkAll">
                                     <label for="checkAll"></label>
                                 </th>
                                 <th>角色</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {{#each roles}}
+                            {{#each Roles}}
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="{{_id}}" class="filled-in"/>
+                                    <input type="checkbox" id="{{_id}}" name="{{name}}"/>
                                     <label for="{{_id}}"></label>
                                 </td>
                                 <td>{{name}}</td>
@@ -61,7 +61,7 @@
         {{#each users}}
         <tr>
             <td>{{username}}</td>
-            <td>{{rolesString}}</td>
+            <td>{{getRoles roles}}</td>
             <td>
                 <a class="edit waves-effect btn-floating"><i class="material-icons">edit</i></a>
                 <a class="remove waves-effect btn-floating"><i class="material-icons">clear</i></a>

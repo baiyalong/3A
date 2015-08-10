@@ -10,3 +10,7 @@ Template.record.helpers({
 });
 
 Template.record.events({});
+
+Template.record.onRendered(function () {
+    Meteor.subscribe('records');
+});

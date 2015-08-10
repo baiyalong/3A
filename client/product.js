@@ -59,4 +59,5 @@ Template.product.events({
 Template.product.onRendered(function () {
     $('select').material_select();
     $('.modal-trigger').leanModal();
+    Meteor.subscribe('products');
 });

@@ -20,3 +20,19 @@ Products.attachSchema(new SimpleSchema({
         optional: true
     }
 }));
+
+Meteor.publish("products", function () {
+    return Products.find();
+});
+
+Products.allow({
+    insert: function () {
+        return true
+    },
+    remove: function () {
+        return true
+    },
+    update: function () {
+        return true
+    }
+})

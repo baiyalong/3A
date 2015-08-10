@@ -11,14 +11,14 @@
                 <div>
                     <div class="input-field row">
                         <input class="validate" type="text" id="name"/>
-                        <label for="name">名称</label>
+                        <label class="active" for="name">名称</label>
                     </div>
                     <div class="row">
                         <table class="hoverable bordered">
                             <thead>
                             <tr>
                                 <th>
-                                    <input type="checkbox" id="checkAll" class="filled-in"/>
+                                    <input type="checkbox" id="checkAll"/>
                                     <label for="checkAll"></label>
                                 </th>
                                 <th>接口名</th>
@@ -30,7 +30,7 @@
                             {{#each products}}
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="{{_id}}" class="filled-in"/>
+                                    <input type="checkbox" id="{{_id}}"/>
                                     <label for="{{_id}}"></label>
                                 </td>
                                 <td>{{name}}</td>

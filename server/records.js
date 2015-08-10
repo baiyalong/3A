@@ -15,11 +15,11 @@ Records.attachSchema(new SimpleSchema({
         type: String,
         label: '接口ID'
     },
-    addr:{
+    addr: {
         type: String,
         label: '接口地址'
     },
-    method:{
+    method: {
         type: String,
         label: '接口方法'
     },
@@ -40,3 +40,14 @@ Records.attachSchema(new SimpleSchema({
         type: Number
     }
 }));
+
+
+Meteor.publish("records", function () {
+    return Records.find();
+});
+
+Records.allow({
+    insert: function () {
+        return true
+    }
+})
