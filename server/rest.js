@@ -14,30 +14,8 @@ var api = new Restivus({
     useDefaultAuth: true
 });
 
-api.addRoute('test/:id', {authRequired: true}, {
-    get: {
-        //roleRequired: ['author', 'admin'],
-        action: function () {
-
-            //this.unblock();
-            var res = false;
-            try {
-                var result = HTTP.call("GET", "https://10.192.18.170/#/login", {
-                    npmRequestOptions: {rejectUnauthorized: false}
-                });
-                res = true;
-            } catch (e) {
-                // Got a network error, time-out or HTTP error in the 400 or 500 range.
-                console.log(e);
-            }
-
-            return {status: res, data: {message: result}};
-        }
-    }
-});
 Products.find().forEach(function (e) {
-    var endPoint = {};
-    endPoint[e.method.toLowerCase()] = function () {
+    var action = function () {
         //console.log(this.request);
         // console.log('-------------------------------------------------------------------------------------------')
         var t0 = Date.now();
@@ -50,14 +28,15 @@ Products.find().forEach(function (e) {
                 data: this.bodyParams
             });
             res = true;
-        } catch (e) {
+        } catch (err) {
             // Got a network error, time-out or HTTP error in the 400 or 500 range.
-            console.error(e);
+            console.error(err);
         }
         var record = {
             userid: this.userId,
             username: this.user.username,
             productid: e._id,
+            name: e.name,
             addr: e.addr,
             method: e.method,
             req: 'req',
@@ -77,8 +56,13 @@ Products.find().forEach(function (e) {
             body: result.data
         }
     };
+    var endPoint = {};
+    endPoint[e.method.toLowerCase()] = {
+        roleRequired: e.roles,
+        action: action
+    };
     var path = e.addr.substring(10);
     path = path.substring(path.indexOf('/'));
-    // api.addRoute(path, {authRequired: true}, endPoint);
+    api.addRoute(path, {authRequired: true}, endPoint);
 })
 ;

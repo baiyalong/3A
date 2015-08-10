@@ -15,6 +15,10 @@ Records.attachSchema(new SimpleSchema({
         type: String,
         label: '接口ID'
     },
+    name:{
+        type: String,
+        label: '接口名称'
+    },
     addr: {
         type: String,
         label: '接口地址'
