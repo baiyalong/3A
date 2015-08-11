@@ -21,22 +21,24 @@ Template.login.events({
         }
     }
 });
-Template.login.onRendered(function () {
+
+Template.login.onCreated(function () {
     if (Meteor.user() != null) {
-        $('#modal').closeModal();
         Router.go('/user');
     }
-    else
-        $('#modal').openModal({
-            dismissible: false, // Modal can be dismissed by clicking outside of the modal
-            opacity: .5, // Opacity of modal background
-            in_duration: 300, // Transition in duration
-            out_duration: 200, // Transition out duration
-            ready: function () {
+});
 
-            }, // Callback for Modal open
-            complete: function () {
+Template.login.onRendered(function () {
+    $('#modal').openModal({
+        dismissible: false, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        in_duration: 300, // Transition in duration
+        out_duration: 200, // Transition out duration
+        ready: function () {
 
-            } // Callback for Modal close
-        });
+        }, // Callback for Modal open
+        complete: function () {
+
+        } // Callback for Modal close
+    });
 });

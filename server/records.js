@@ -15,7 +15,7 @@ Records.attachSchema(new SimpleSchema({
         type: String,
         label: '接口ID'
     },
-    name:{
+    name: {
         type: String,
         label: '接口名称'
     },
@@ -46,8 +46,11 @@ Records.attachSchema(new SimpleSchema({
 }));
 
 
-Meteor.publish("records", function () {
-    return Records.find();
+Meteor.publish("getRecords", function (limit) {
+    if (limit > Records.find().count()) {
+        limit = 0;
+    }
+    return Records.find({}, {limit: limit});
 });
 
 Records.allow({

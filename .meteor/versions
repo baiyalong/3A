@@ -47,6 +47,7 @@ mongo@1.1.0
 nimble:restivus@0.8.2
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
+okgrow:iron-router-autoscroll@0.0.8
 ordered-dict@1.0.3
 planettraining:material-design-icons-font@2.0.0_1
 random@1.0.3

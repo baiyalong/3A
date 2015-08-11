@@ -137,10 +137,13 @@ Template.order.events({
     }
 });
 
-Template.order.onRendered(function () {
-    $('.modal-trigger').leanModal();
+Template.order.onCreated(function(){
     Meteor.subscribe('orders');
     Meteor.subscribe('users');
     Meteor.subscribe('products');
     Meteor.subscribe('roles');
+});
+
+Template.order.onRendered(function () {
+    $('.modal-trigger').leanModal();
 });

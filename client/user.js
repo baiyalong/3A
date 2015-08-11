@@ -115,9 +115,12 @@ Template.user.events({
     }
 });
 
+Template.user.onCreated(function(){
+    Meteor.subscribe('users');
+    Meteor.subscribe('roles');
+});
+
 Template.user.onRendered(function () {
     $('select').material_select();
     $('.modal-trigger').leanModal();
-    Meteor.subscribe('users');
-    Meteor.subscribe('roles');
 });
