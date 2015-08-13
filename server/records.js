@@ -46,7 +46,7 @@ Records.attachSchema(new SimpleSchema({
 }));
 
 
-Meteor.publish("getRecords", function (limit) {
+Meteor.publish("records", function (limit) {
     if (limit > Records.find().count()) {
         limit = 0;
     }
