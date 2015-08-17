@@ -14,21 +14,26 @@ Template.product.events({
         var product = {
             name: $('#name').val(),
             addr: $('#addr').val(),
-            method: $('#method').val() == null ? 'GET' : $('#method').val()
+            method: $('#method').val() == null ? 'GET' : $('#method').val(),
+            soapMethod: $('#soapMethod').val()
         };
         var id = $('#topic').attr('_id');
         if (!id) {
             Products.insert(product, function (err) {
                 if (err)alert(err);
-                else
+                else {
                     Materialize.toast(' 添加成功！', 4000)
+                    Meteor.call('refreshRestivus');
+                }
             });
         }
         else {
             Products.update({_id: id}, {$set: product}, function (err) {
                 if (err)alert(err);
-                else
+                else {
                     Materialize.toast(' 修改成功！', 4000)
+                    Meteor.call('refreshRestivus');
+                }
             });
         }
     },
@@ -37,12 +42,15 @@ Template.product.events({
         $('#topic').attr('_id', null);
         $('#name').val('');
         $('#addr').val('');
+        $('#soapMethod').val('');
     },
     'click .remove': function () {
         Products.remove({_id: this._id}, function (err) {
             if (err)alert(err);
-            else
+            else {
                 Materialize.toast(' 删除成功！', 4000)
+                Meteor.call('refreshRestivus');
+            }
         })
     },
     'click .edit': function () {
@@ -52,11 +60,12 @@ Template.product.events({
         $('#name').val(product.name);
         $('#addr').val(product.addr);
         $('#method').val(product.method);
+        $('#soapMethod').val(product.soapMethod);
         $('#modal1').openModal();
     }
 });
 
-Template.product.onCreated(function(){
+Template.product.onCreated(function () {
     Meteor.subscribe('products');
 });
 

@@ -41,15 +41,19 @@ Template.order.events({
         if (!id) {
             Meteor.call('newOrder', name, products, function (err) {
                 if (err)alert(err)
-                else
+                else {
                     Materialize.toast(' 添加成功！', 4000)
+                    Meteor.call('refreshRestivus');
+                }
             });
         } else {
             if (Session.get('product') == name)
                 Meteor.call('editOrder', name, products, function (err) {
                     if (err)alert(err)
-                    else
+                    else {
                         Materialize.toast(' 修改成功！', 4000)
+                        Meteor.call('refreshRestivus');
+                    }
                 });
             else
                 Meteor.call('deleteOrder', Session.get('product'), function (err) {
@@ -57,8 +61,10 @@ Template.order.events({
                     else {
                         Meteor.call('newOrder', name, products, function (err) {
                             if (err)alert(err)
-                            else
+                            else {
                                 Materialize.toast(' 修改成功！', 4000)
+                                Meteor.call('refreshRestivus');
+                            }
                         });
                     }
                 });
@@ -94,8 +100,10 @@ Template.order.events({
     'click .remove': function () {
         Meteor.call('deleteOrder', this.name, function (err) {
             if (err)alert(err)
-            else
+            else {
                 Materialize.toast(' 删除成功！', 4000)
+                Meteor.call('refreshRestivus');
+            }
         });
     },
     'change input:checkbox': function () {
@@ -137,7 +145,7 @@ Template.order.events({
     }
 });
 
-Template.order.onCreated(function(){
+Template.order.onCreated(function () {
     Meteor.subscribe('orders');
     Meteor.subscribe('users');
     Meteor.subscribe('products');

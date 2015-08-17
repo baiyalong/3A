@@ -5,8 +5,8 @@
 Products.attachSchema(new SimpleSchema({
     name: {
         type: String,
-        index: true,
-        unique: true
+       // index: true,
+       // unique: true
     },
     addr: {
         type: String,
@@ -14,6 +14,10 @@ Products.attachSchema(new SimpleSchema({
     },
     method: {
         type: String,
+    },
+    soapMethod: {
+        type: String,
+        optional: true
     },
     roles: {
         type: [String],

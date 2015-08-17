@@ -34,10 +34,11 @@ Meteor.methods({
     },
     editOrder: function (name, products) {
         Products.find().forEach(function (e) {
-                if (e.roles && e.roles.indexOf(name) != -1 && products.indexOf(e._id) == -1) {
+                if (e.roles == undefined)e.roles = [];
+                if (e.roles.indexOf(name) != -1 && products.indexOf(e._id) == -1) {
                     Products.update({_id: e._id}, {$pullAll: {roles: [name]}});
                 }
-                else if (e.roles && e.roles.indexOf(name) == -1 && products.indexOf(e._id) != -1) {
+                else if (e.roles.indexOf(name) == -1 && products.indexOf(e._id) != -1) {
                     Products.update({_id: e._id}, {$push: {roles: name}});
                 }
             }

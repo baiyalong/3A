@@ -26,6 +26,10 @@
                         </select>
                         <label for="method">方法</label>
                     </div>
+                    <div class="input-field row">
+                        <input class="validate" type="text" id="soapMethod"/>
+                        <label class="active" for="soapMethod">soap接口</label>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -40,6 +44,7 @@
             <th>接口名</th>
             <th>地址</th>
             <th>方法</th>
+            <th>soap接口</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -49,6 +54,7 @@
             <td>{{name}}</td>
             <td>{{addr}}</td>
             <td>{{method}}</td>
+            <td>{{soapMethod}}</td>
             <td>
                 <a class="edit modal-trigger waves-effect btn-floating"><i class="material-icons">edit</i></a>
                 <a class="remove waves-effect btn-floating"><i class="material-icons">clear</i></a>
